@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import { AiFillStar } from "react-icons/ai";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
+import Image from "next/image";
 
 const mentors = [
-  { name: "Abhi", expertise: "WebDeveloper", image: "./assets/AJ.png" },
+  { name: "Abhi", expertise: "WebDeveloper", image: "/assets/AJ.png" },
   { name: "Karthik", expertise: "Subheading", image: "/mentor2.png" },
   { name: "Sai", expertise: "Subheading", image: "/mentor3.png" },
   { name: "Unknown", expertise: "Subheading", image: "/mentor4.png" },
@@ -43,8 +44,8 @@ export default function Home() {
   const closeDropdown = () => setDropdownOpen(false);
 
   useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (!event.target.closest(".dropdown")) {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (!(event.target as HTMLElement).closest(".dropdown")) {
         closeDropdown();
       }
     };
@@ -87,13 +88,13 @@ export default function Home() {
               >
                 <a
                   href="/login/mentorLogin"
-                  className="block w-full text-left px-4 py-2 hover:gray-100 transition-all duration-300"
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-100 transition-all duration-300"
                 >
                   As a Mentor
                 </a>
                 <a
-                  href="/login/studentLogin" 
-                  className="block w-full text-left px-4 py-2 hover:gray-100 transition-all duration-300"
+                  href="/login/studentLogin"
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-100 transition-all duration-300"
                 >
                   As a Student
                 </a>
@@ -120,10 +121,12 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <img
+              <Image
                 src={mentor.image}
                 alt={mentor.name}
-                className="w-24 h-24 rounded-full mb-4 object-cover"
+                width={96}
+                height={96}
+                className="rounded-full mb-4 object-cover"
               />
               <h4 className="text-lg font-bold">{mentor.name}</h4>
               <p className="text-gray-600">{mentor.expertise}</p>

@@ -29,7 +29,7 @@ export default function LoginPage() {
   );
 }
 
-function LoginForm({ switchToRegister }) {
+function LoginForm({ switchToRegister }: { switchToRegister: () => void }) {
   return (
     <motion.div
       className="space-y-4"
@@ -65,7 +65,7 @@ function LoginForm({ switchToRegister }) {
   );
 }
 
-function RegisterForm({ switchToLogin }) {
+function RegisterForm({ switchToLogin }: { switchToLogin: () => void }) {
   return (
     <motion.div
       className="space-y-4"
